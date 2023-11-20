@@ -1,0 +1,29 @@
+# Virtual environment
+venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# SQLite database files
+*.db
+
+# Log files
+*.log
+
+# Compiled Python files
+*.pyc
+
+# Compiled C extension files
+*.so
+
+# Backup files
+*~
+
+# IDE specific files
+.vscode/
+.idea/
