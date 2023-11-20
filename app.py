@@ -82,9 +82,8 @@ class UpdateArticleForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=4, max=50)])
-    password = PasswordField('Password', validators=[DataRequired(),
-        EqualTo('Confirm Password', message='Passwords must match')])
-    confirm_password = PasswordField('Confirm Password')
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=50)])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password', message='Passwords must match')])
     submit = SubmitField('Register')
 
 class LoginForm(FlaskForm):
@@ -288,11 +287,10 @@ def delete_article_route(article_id):
 def register():
     form = RegistrationForm()
 
-    if form.validate_on_submit():
+    if form.validate():
         # Check if passwords are equal
         if form.password.data != form.confirm_password.data:
             flash('Passwords must match', 'error')
-            print(get_flashed_messages())
             return render_template('register.html', form=form)
 
         # Continue with registration

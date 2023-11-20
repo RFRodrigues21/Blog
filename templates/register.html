@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post" action="{{ url_for('register') }}" onclick="validateForm()">
+<form method="post" action="{{ url_for('register') }} " onsubmit="return validateForm()">
 {{ form.hidden_tag() }}
 
 <section class="bg-gray-50 ">
@@ -13,8 +13,8 @@
                 </h1>
 
                 <div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your
-                        email</label>
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 ">Your
+                        username</label>
                     {{ form.username(class="bg-gray-50 border border-gray-300 text-gray-900
                     sm:text-sm rounded-lg focus:ring-primary-600
                     focus:border-primary-600 block w-full p-2.5
@@ -38,12 +38,11 @@
 
                 </div>
 
-
                 <button type="submit"
-                        class="w-full text-white bg-blue-700 hover:bg-primary-700 focus:ring-4
+                                class="w-full text-white bg-blue-700 hover:bg-primary-700 focus:ring-4
                                 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
-                    Create an account
-                </button>
+                            Sign in
+                        </button>
                 <p class="text-sm font-light text-gray-500 ">
                     Already have an account? <a href="{{url_for('login')}}"
                                                 class="font-medium text-primary-600 hover:underline ">Login
@@ -59,7 +58,7 @@
 <script>
     function validateForm() {
         var password = document.getElementById('password').value;
-        var confirmPassword = document.getElementById('confirm_password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;  // Corrected id here
         var errorElement = document.getElementById('password-match-error');
 
         if (password !== confirmPassword) {
